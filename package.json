@@ -1,0 +1,32 @@
+{
+  "name": "@proplay/message-broker",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Message Broker for ProPlay Services",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "prepare": "npm run build:production",
+    "build:production": "npm run prestart && npm prune --production"
+  },
+  "keywords": [],
+  "author": "Doug Schamberg",
+  "license": "ISC",
+  "dependencies": {
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "@types/redis": "^2.8.14",
+    "typescript": "^3.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polarpop/proplay-message-broker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/polarpop/proplay-message-broker/issues"
+  },
+  "homepage": "https://github.com/polarpop/proplay-message-broker#readme"
+}
