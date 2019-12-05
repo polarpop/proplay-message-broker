@@ -39,7 +39,7 @@ export class Broker<Model> {
 
       let serialized = this.serialize(instance);
 
-      this.client.set(`${id}`, serialized, (err) => {
+      this.client.set(`${id}`, serialized, (err: any) => {
         if (err) reject(err);
         resolve();
       });
@@ -48,7 +48,7 @@ export class Broker<Model> {
 
   async retrieve(key: string): Promise<Model> {
     return await new Promise((resolve, reject) => {
-      this.client.get(`${key}`, (err, res) => {
+      this.client.get(`${key}`, (err: any, res: any) => {
         if (err) reject(err);
 
         let instance = this.deserialize(res);
@@ -60,7 +60,7 @@ export class Broker<Model> {
 
   async destroy(key: string): Promise<undefined> {
     return await new Promise((resolve, reject) => {
-      this.client.del(`${key}`, (err, res) => {
+      this.client.del(`${key}`, (err: any, res: any) => {
         if (err) reject(err);
 
         if (res === 1) resolve();
@@ -71,7 +71,7 @@ export class Broker<Model> {
 
   private async scanAsync(cursor: string, type: string, pattern: string): Promise<any[]> {
     return await new Promise((resolve, reject) => {
-      this.client.scan(cursor, type, pattern, (err, res) => {
+      this.client.scan(cursor, type, pattern, (err: any, res: any[]) => {
         if (err) reject(err);
 
         resolve(res);

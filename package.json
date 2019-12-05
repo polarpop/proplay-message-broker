@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
-    "prepare": "npm run build:production",
+    "prepublishOnly": "npm run build:production",
     "build:production": "npm run prestart && npm prune --production"
   },
   "keywords": [],
