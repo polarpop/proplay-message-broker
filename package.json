@@ -1,6 +1,5 @@
 {
   "name": "@proplay/message-broker",
-  "private": true,
   "version": "0.0.1",
   "description": "Message Broker for ProPlay Services",
   "main": "index.js",
@@ -14,6 +13,7 @@
   "author": "Doug Schamberg",
   "license": "ISC",
   "dependencies": {
+    "@types/redis": "^2.8.14",
     "redis": "^2.8.0"
   },
   "devDependencies": {
