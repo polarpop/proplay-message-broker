@@ -29,7 +29,7 @@ export class Broker<Model> {
         return Promise.reject(e);
       }
     } while (cursor !== '0');
-    return found;
+    return found.map((v: string) => this.serialize(v));
   }
 
   async set(instance: Model, options: SetterOpts = { keyId: 'id'}): Promise<undefined> {
@@ -69,7 +69,7 @@ export class Broker<Model> {
     })
   }
 
-  private async scanAsync(cursor: string, type: string, pattern: string): Promise<any[]> {
+  private async scanAsync(cursor: string, type: string, pattern: string): Promise<string[]> {
     return await new Promise((resolve, reject) => {
       this.client.scan(cursor, type, pattern, (err: Error | null, res: any[]) => {
         if (err) reject(err);
