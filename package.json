@@ -1,6 +1,6 @@
 {
   "name": "@proplay/message-broker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Message Broker for ProPlay Services",
   "main": "index.js",
   "scripts": {
