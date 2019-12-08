@@ -29,7 +29,7 @@ export class Broker<Model> {
         return Promise.reject(e);
       }
     } while (cursor !== '0');
-    return found.map(this.deserialize.bind(this));
+    return found.map(this.deserialize);
   }
 
   async set(instance: Model, options: SetterOpts = { keyId: 'id'}): Promise<undefined> {
