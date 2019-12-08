@@ -29,7 +29,7 @@ export class Broker<Model> {
         return Promise.reject(e);
       }
     } while (cursor !== '0');
-    return await Promise.all(found.map(key => this.retrieve(`${key}`)));
+    return await Promise.all(found.map(key => this.retrieve(`${key.split(':')[key.split(':').length - 1]}`)));
   }
 
   async set(instance: Model, options: SetterOpts = { keyId: 'id'}): Promise<undefined> {
@@ -49,11 +49,11 @@ export class Broker<Model> {
   async retrieve(key: string): Promise<Model> {
     return await new Promise((resolve, reject) => {
       this.client.get(`${key}`, (err: Error|null, res: string) => {
-        if (err) reject(err);
+        if (err) return reject(err);
 
         let instance = this.deserialize(res);
 
-        resolve(instance);
+        return resolve(instance);
       })
     });
   }
