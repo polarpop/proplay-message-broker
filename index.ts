@@ -6,9 +6,9 @@ export interface SetterOpts {
 }
 
 export class Broker<Model> {
-  private client: RedisClient;
+  client: RedisClient;
 
-  private options?: ClientOpts;
+  options?: ClientOpts;
 
   constructor(options?: ClientOpts) {
     this.options = options;
