@@ -83,13 +83,8 @@ export class Broker<Model> {
     return JSON.stringify(model);
   }
 
-  private deserialize(serialized: string): Model|undefined {
-    console.log(serialized);
-    try {
-      return JSON.parse(serialized);
-    } catch (e) {
-      return;
-    }
-    
+  private deserialize(serialized: string): Model {
+    console.log(serialized)
+    return JSON.parse(serialized);
   }
 }
