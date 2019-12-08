@@ -30,7 +30,7 @@ export class Broker<Model> {
       }
     } while (cursor !== '0');
     // @ts-ignore
-    return found.map(this.retrieve);
+    return found.map(this.retrieve.bind(this));
   }
 
   async set(instance: Model, options: SetterOpts = { keyId: 'id'}): Promise<undefined> {
